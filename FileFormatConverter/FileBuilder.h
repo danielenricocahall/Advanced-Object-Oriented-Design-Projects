@@ -22,6 +22,7 @@ public:
     std::map<char, char> getTokens() const;
     std::string getUpdatedFileContents() const;
     void addTokenPair( std::pair<char, char> token);
+    void clearTokens();
 
 protected:
     std::map<char, char> m_tokens;

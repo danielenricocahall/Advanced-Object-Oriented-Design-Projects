@@ -12,34 +12,37 @@ FileWriter::FileWriter()
 {
 	m_convertedFileName = "";
 }
+
 FileWriter::~FileWriter()
 {
-
+	clear();
 }
 
-void FileWriter::setFileToWriteTo(const std::string& convertedFileName)
+void FileWriter::setFileToWriteTo(const std::string& originalFileName)
 {
-	this->m_convertedFileName = convertedFileName;
+	if(m_convertedFileName.empty())
+	{
+		size_t lastIndex = originalFileName.find_last_of(".");
+		this->m_convertedFileName =
+				originalFileName.substr(0, lastIndex) +
+				"_updated" +
+				originalFileName.substr(lastIndex);
+	}
 }
 
 
-
+void FileWriter::clear()
+{
+	m_convertedFileName = "";
+}
 std::string FileWriter::convertAndWriteFile(FileBuilder * builder, const std::string& originalFileContents)
 {
 	builder->buildString(originalFileContents);
-	m_convertedFileName = "foo.txt";
-	/*if(m_convertedFileName.empty())
-	{
-		size_t lastIndex = originalFileName.find_last_of(".");
-		setFileToWriteTo(originalFileName.substr(0, lastIndex) +
-				"_updated" +
-				originalFileName.substr(lastIndex));
-	}*/
 	std::ofstream myfile (m_convertedFileName);
-	  if (myfile.is_open())
-	  {
-	    myfile << builder->getUpdatedFileContents();
-	    myfile.close();
-	  }
+	if (myfile.is_open())
+	{
+	  myfile << builder->getUpdatedFileContents();
+	  myfile.close();
+	}
 	return builder->getUpdatedFileContents();
 }

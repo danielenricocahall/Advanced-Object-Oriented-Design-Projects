@@ -39,3 +39,8 @@ std::string FileBuilder::getUpdatedFileContents() const
 {
 	return m_updatedFileContents;
 }
+
+void FileBuilder::clearTokens()
+{
+	m_tokens.clear();
+}

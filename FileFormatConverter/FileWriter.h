@@ -16,8 +16,8 @@ public:
 	FileWriter();
 	virtual ~FileWriter();
 	void setFileToWriteTo(const std::string& updatedFileName);
-
 	std::string convertAndWriteFile(FileBuilder * builder, const std::string& originalFileContents);
+	void clear();
 
 private:
 	std::string m_convertedFileName;
