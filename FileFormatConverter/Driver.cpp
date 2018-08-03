@@ -1,12 +1,13 @@
-#include "ColonToCommaFileConverterFactory.h"
 #include "FileWriter.h"
 
 #include <iostream>
+
+#include "BasicFileDelimitingConverterFactory.h"
 int main()
 {
 
-    FileReader * fileReader =  ColonToCommaFileConverterFactory::getInstance().createFileReader();
-    FileBuilder * fileBuilder = ColonToCommaFileConverterFactory::getInstance().createFileBuilder();
+    FileReader * fileReader =  BasicFileDelimitingConverterFactory::getInstance().createFileReader();
+    FileBuilder * fileBuilder = BasicFileDelimitingConverterFactory::getInstance().createFileBuilder();
     fileBuilder->addTokenPair(std::pair<char, char>(',' , ':'));
 
     FileWriter * fileWriter = new FileWriter();
@@ -28,6 +29,10 @@ int main()
     fileWriter->clear();
     fileWriter->setFileToWriteTo(file_name2);
     fileWriter->convertAndWriteFile(fileBuilder2, fileReader->getFileContents());
+
+    delete fileReader;
+    delete fileBuilder;
+    delete fileWriter;
 
 
 

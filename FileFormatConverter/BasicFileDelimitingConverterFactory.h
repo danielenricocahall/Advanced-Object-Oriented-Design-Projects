@@ -5,13 +5,13 @@
 #include "FileConverterFactory.h"
 
 
-class ColonToCommaFileConverterFactory
+class BasicFileDelimitingConverterFactory
 {
 public:
 
-static ColonToCommaFileConverterFactory& getInstance()
+static BasicFileDelimitingConverterFactory& getInstance()
 {
-	static ColonToCommaFileConverterFactory instance;
+	static BasicFileDelimitingConverterFactory instance;
 	return instance;
 }
 
@@ -20,6 +20,6 @@ virtual FileBuilder* createFileBuilder() const;
 
 private:
 
-	ColonToCommaFileConverterFactory();
-	~ColonToCommaFileConverterFactory();
+	BasicFileDelimitingConverterFactory();
+	~BasicFileDelimitingConverterFactory();
 };
