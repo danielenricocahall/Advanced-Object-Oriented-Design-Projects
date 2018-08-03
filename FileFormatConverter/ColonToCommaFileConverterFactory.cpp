@@ -1,3 +1,10 @@
+/*
+ * FileBuilder.cpp
+ *
+ *  Created on: Aug 3, 2018
+ *      Author: daniel
+ */
+
 #include "ColonToCommaFileConverterFactory.h"
 
 
@@ -12,13 +19,13 @@ ColonToCommaFileConverterFactory::~ColonToCommaFileConverterFactory()
 
 }
 
-FileReader* ColonToCommaFileConverterFactory::createFileReader()
+FileReader* ColonToCommaFileConverterFactory::createFileReader() const
 {
 
-	return new ColonFileReader();
+	return new BasicFileReader();
 
 }
-FileBuilder* ColonToCommaFileConverterFactory::createFileBuilder()
+FileBuilder* ColonToCommaFileConverterFactory::createFileBuilder() const
 {
 	return nullptr;
 }

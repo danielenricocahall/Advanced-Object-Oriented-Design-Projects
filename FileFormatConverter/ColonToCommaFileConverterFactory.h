@@ -1,6 +1,6 @@
 #pragma once
+#include "BasicFileReader.h"
 #include "FileConverterFactory.h"
-#include "ColonFileReader.h"
 
 
 class ColonToCommaFileConverterFactory
@@ -9,16 +9,15 @@ public:
 
 static ColonToCommaFileConverterFactory& getInstance()
 {
-
-static ColonToCommaFileConverterFactory instance;
-return instance;
+	static ColonToCommaFileConverterFactory instance;
+	return instance;
 }
 
-virtual FileReader* createFileReader();
-virtual FileBuilder* createFileBuilder();
+virtual FileReader* createFileReader() const;
+virtual FileBuilder* createFileBuilder() const;
 
 private:
 
-ColonToCommaFileConverterFactory();
-~ColonToCommaFileConverterFactory();
+	ColonToCommaFileConverterFactory();
+	~ColonToCommaFileConverterFactory();
 };

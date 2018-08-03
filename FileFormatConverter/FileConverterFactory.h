@@ -8,8 +8,10 @@ class FileConverterFactory
 {
 
 public:
-    virtual FileReader* createFileReader() = 0;
-    virtual FileBuilder* createFileBuilder() = 0;
+
+	// Note: didn't used shared ptrs, because I like to live dangerously.
+    virtual FileReader* createFileReader() const = 0;
+    virtual FileBuilder* createFileBuilder() const = 0;
     virtual ~FileConverterFactory();
 
 protected:
