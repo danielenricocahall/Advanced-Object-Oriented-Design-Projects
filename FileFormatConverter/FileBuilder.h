@@ -4,21 +4,28 @@
  *  Created on: Aug 3, 2018
  *      Author: daniel
  */
-
+#pragma once
 #include <string>
 #include <deque>
+#include <map>
+#include <algorithm>
 
 class FileBuilder
 {
 
 public:
-
-    virtual void buildString(const std::string &originalFileContents) const = 0;
+	FileBuilder();
     virtual ~FileBuilder();
-    virtual FileBuilder* clone() const = 0;
+	FileBuilder( const FileBuilder& copy );
+    virtual void buildString(const std::string &originalFileContents) = 0;
+    virtual FileBuilder* clone() = 0;
+    std::map<char, char> getTokens() const;
+    std::string getUpdatedFileContents() const;
+    void addTokenPair( std::pair<char, char> token);
 
 protected:
-    std::deque<char> tokens;
+    std::map<char, char> m_tokens;
+    std::string m_updatedFileContents;
 
 
 

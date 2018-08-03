@@ -3,7 +3,7 @@
 
 std::string FileReader::getFileContents() const
 {
-    return fileContents;
+    return m_fileContents;
 }
 
 

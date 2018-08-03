@@ -1,5 +1,7 @@
 #pragma once
 #include "BasicFileReader.h"
+#include "BasicFileBuilder.h"
+
 #include "FileConverterFactory.h"
 
 

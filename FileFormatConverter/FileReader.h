@@ -15,7 +15,7 @@ protected:
 
 // fields
 
-	std::string fileContents;
+	std::string m_fileContents;
 
 
 };

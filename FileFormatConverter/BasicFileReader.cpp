@@ -27,11 +27,11 @@ if(file.fail())
 else
 {
  if (file.is_open()) {
+	 std::string temp;
 	 while (!file.eof())
 	 {
-
-		getline(file, fileContents);
-		std::cout<<fileContents;
+		getline(file, temp);
+		m_fileContents.append(temp).append("\n");
 
 	 }
  }

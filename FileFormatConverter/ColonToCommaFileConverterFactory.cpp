@@ -7,7 +7,6 @@
 
 #include "ColonToCommaFileConverterFactory.h"
 
-
 ColonToCommaFileConverterFactory::ColonToCommaFileConverterFactory()
 {
     
@@ -27,7 +26,7 @@ FileReader* ColonToCommaFileConverterFactory::createFileReader() const
 }
 FileBuilder* ColonToCommaFileConverterFactory::createFileBuilder() const
 {
-	return nullptr;
+	return new BasicFileBuilder();
 }
 
 
