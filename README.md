@@ -13,4 +13,6 @@ In this project, I applied the Abstract Factory, Singleton, Prototype, and Build
 
 * FileWriter is the class which, provided an instance of FileBuilder and a string containing the original file contents, will call the FileBuilder's *buildString* function on the string, and write the new contents to a file. 
 
+The functionality of this architecture can be verified by running the driver (*Driver.cpp*). 
+
 
