@@ -5,7 +5,7 @@
 In this project, I applied the Abstract Factory, Singleton, Prototype, and Builder software design patterns. 
 
 
-* The FileConverterFactory is an abstract factory which can create families of FileReaders and FileBuilders. Only one instance of the FileConverterFactory can exist throughout the application.
+* The FileConverterFactory is an abstract factory which can create families of FileReaders and FileBuilders. BasicFileDelimitingFactory is an implementation of the FileConverterFactory, and only one instance of the FileConverterFactory can exist throughout the application.
 
 * FileReader is an interface with a member variable of type string which stores the results of reading the file. The implementation of this interface I've provided, BasicFileReader, is a bit trivial. However, it's been written such that more advanced file readers can be implemented and used in the same way. The string provided by the FileReader can then be manipulated by the FileBuilder.
 
