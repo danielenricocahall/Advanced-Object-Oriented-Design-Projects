@@ -9,6 +9,7 @@ class BasicFileDelimitingConverterFactory
 {
 public:
 
+// Note: lazy initialization
 static BasicFileDelimitingConverterFactory& getInstance()
 {
 	static BasicFileDelimitingConverterFactory instance;
