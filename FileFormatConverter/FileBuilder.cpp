@@ -24,13 +24,13 @@ FileBuilder::FileBuilder(const FileBuilder& copy)
 }
 
 
-void FileBuilder::addTokenPair(std::pair<char, char> token)
+void FileBuilder::addTokenPair(std::pair<std::string, std::string> token)
 {
 
 	m_tokens.insert(token);
 }
 
-std::map<char, char> FileBuilder::getTokens() const
+std::map<std::string, std::string> FileBuilder::getTokens() const
 {
 	return m_tokens;
 }

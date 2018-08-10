@@ -19,13 +19,13 @@ public:
 	FileBuilder( const FileBuilder& copy );
     virtual void buildString(const std::string &originalFileContents) = 0;
     virtual FileBuilder* clone() = 0;
-    std::map<char, char> getTokens() const;
+    std::map<std::string, std::string> getTokens() const;
     std::string getUpdatedFileContents() const;
-    void addTokenPair( std::pair<char, char> token);
+    void addTokenPair( std::pair<std::string, std::string> token);
     void clearTokens();
 
 protected:
-    std::map<char, char> m_tokens;
+    std::map<std::string, std::string> m_tokens;
     std::string m_updatedFileContents;
 
 

@@ -15,7 +15,7 @@ BasicFileReader::BasicFileReader()
 }
 void BasicFileReader::readFile(const std::string& fileName)
 {
-	std::cout << "Reading " + fileName << std::endl;
+	std::cout << "Reading " + fileName << "!" << std::endl;
 	std::fstream file;
 	file.open(fileName);
 	if(file.fail())
@@ -36,6 +36,8 @@ void BasicFileReader::readFile(const std::string& fileName)
 		 }
 		file.close();
 	}
+	std::cout << "Done reading " + fileName << "!" << std::endl;
+
 }
 
 

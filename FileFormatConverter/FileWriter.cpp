@@ -37,12 +37,17 @@ void FileWriter::clear()
 }
 std::string FileWriter::convertAndWriteFile(FileBuilder * builder, const std::string& originalFileContents)
 {
+
 	builder->buildString(originalFileContents);
+	std::cout << "Writing to " << m_convertedFileName << " now!" << std::endl;
+
 	std::ofstream myfile (m_convertedFileName);
 	if (myfile.is_open())
 	{
 	  myfile << builder->getUpdatedFileContents();
 	  myfile.close();
 	}
+	std::cout << "Done writing to " << m_convertedFileName << "!" << std::endl;
+
 	return builder->getUpdatedFileContents();
 }
