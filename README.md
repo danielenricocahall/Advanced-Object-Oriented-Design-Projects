@@ -18,9 +18,9 @@ The functionality of this architecture can be verified by running the driver (*D
 
 ## Designing Twitter ##
 
-* Observer Pattern - Each user is an instantiation of a class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe to other users, and have other users subscribe to them.
+* Observer Pattern - Each user is an instantiation of a class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe/unsubscribe to other users, and have other users subscribe/unsubscribe to them.
 
-* Flyweight - Users can create instances of message objects, which are comprised of text (letters a-z, numbers 0-9, emojis). Rather than creating a new object for each character in the message, one instance for each object can be used, and the external state (e.g; font, location in the message, absolute location on screen) of that obect can be modified.
+* Flyweight - Users can create instances of message objects, which are comprised of text (letters a-z, numbers 0-9, emojis). Rather than creating a new object for each character in the message, one instance for each object can be used, and the external state (e.g; font, location in the message, absolute location on screen) of that object can be modified.
 
 * Factory Method - The Flyweight pattern typically utilizes a Factory Method to control the creation of objects. In this context, a factory method would control the instantiation of different characters and symbols.
 
@@ -28,5 +28,14 @@ The functionality of this architecture can be verified by running the driver (*D
 
 * Memento - Each user object would have a memento object which regularly saves their state while writing a message. This ensures that, if their connection was lost, they can log on again and continue writing their message.
 
+* Facade - The interface the user interacts with to write and send messages is a Facade - it hides the details of creating and modifying the Message object, connecting to the Twitter servers, and posting the message in chronological order along with other users in their feed. 
+
+* Iterator - For searching through Message objects in a feed, I would use the iterator pattern. This ensures that I can still traverse through Messages if the implementation changes, or if I want to define a new implementation sometime in the future.
+
+* Command - When a user pushes a button on the frontend to accomplish an action (e.g; send, delete, retweet), the request will be forwarded to a request object. In this way, I can change the implementation of how a request is performed seamlessly. 
+
+* Proxy - To ensure a user isn't either banned or spamming (maybe they've been hacked/a bot is posting on their account), the "submit message" request object firsts connect to a Proxy, which performs several checks before posting the message.
+
+* Prototype - The "Retweet" button will require performing a clone operation on the original Message object. 
 
 
