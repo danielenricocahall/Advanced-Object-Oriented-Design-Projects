@@ -20,13 +20,13 @@ The functionality of this architecture can be verified by running the driver (*D
 
 * Observer Pattern - Each user is an instantiation of a class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe/unsubscribe to other users, and have other users subscribe/unsubscribe to them.
 
-* Flyweight - Users can create instances of message objects, which are comprised of text (letters a-z, numbers 0-9, emojis). Rather than creating a new object for each character in the message, one instance for each object can be used, and the external state (e.g; font, location in the message, absolute location on screen) of that object can be modified.
+* Flyweight - Users can create instances of Message objects, which are comprised of text (letters a-z, numbers 0-9, emojis). Rather than creating a new object for each character in the message, one instance for each object can be used, and the external state (e.g; font, location in the message, absolute location on screen) of that object can be modified.
 
 * Factory Method - The Flyweight pattern typically utilizes a Factory Method to control the creation of objects. In this context, a factory method would control the instantiation of different characters and symbols.
 
 * Singleton - Since only one instance of each Flyweight object should exist at a time, each Flyweight object is typically implemented using a Singleton.
 
-* Memento - Each user object would have a memento object which regularly saves their state while writing a message. This ensures that, if their connection was lost, they can log on again and continue writing their message.
+* Memento - Each user object would have a memento object which regularly saves their state while writing a post (creating a Message object). This ensures that, if their connection was lost, they can log on again and continue writing their post.
 
 * Facade - The interface the user interacts with to write and send messages is a Facade - it hides the details of creating and modifying the Message object, connecting to the Twitter servers, and posting the message in chronological order along with other users in their feed. 
 
