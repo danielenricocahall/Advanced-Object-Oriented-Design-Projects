@@ -16,3 +16,17 @@ In this project, I applied the Abstract Factory, Singleton, Prototype, and Build
 The functionality of this architecture can be verified by running the driver (*Driver.cpp*). 
 
 
+## Designing Twitter ##
+
+* Observer Pattern - Each user is an instantiation of a class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe to other users, and have other users subscribe to them.
+
+* Flyweight - Users can create instances of message objects, which are comprised of text (letters a-z, numbers 0-9, emojis). Rather than creating a new object for each character in the message, one instance for each object can be used, and the external state (e.g; font, location in the message, absolute location on screen) of that obect can be modified.
+
+* Factory Method - The Flyweight pattern typically utilizes a Factory Method to control the creation of objects. In this context, a factory method would control the instantiation of different characters and symbols.
+
+* Singleton - Since only one instance of each Flyweight object should exist at a time, each Flyweight object is typically implemented using a Singleton.
+
+* Memento - Each user object would have a memento object which regularly saves their state while writing a message. This ensures that, if their connection was lost, they can log on again and continue writing their message.
+
+
+
