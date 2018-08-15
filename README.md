@@ -20,7 +20,7 @@ The functionality of this architecture can be verified by running the driver (*D
 
 ## Assignment 3: Designing Twitter ##
 
-![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2-Twitter.png)
+![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz3_Twitter.png)
 
 To design and implement Twitter, I would use the following software design patterns:
 
