@@ -22,23 +22,23 @@ The functionality of this architecture can be verified by running the driver (*D
 
 To design and implement Twitter, I would use the following software design patterns:
 
-* Observer Pattern - Each Twitter user is an instantiation of a class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe/unsubscribe to other users, and have other users subscribe/unsubscribe to them.
+* Observer Pattern - Each Twitter user is an instantiation of a User class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe/unsubscribe to other users, and have other users subscribe/unsubscribe to them.
 
-* Flyweight - Users can create instances of Message objects, which are comprised of text (letters a-z, numbers 0-9, emojis). Rather than creating a new object for each character in the message, one instance for each object can be used, and the external state (e.g; font, location in the message, absolute location on screen) of that object can be modified.
+* Facade - The interface the user interacts with is a Facade - it hides the details of rendering letters on the screen, connecting to the Twitter servers, and posting the message in chronological order along with other users in their feed. 
+
+* Flyweight - Users can create instances of Message objects, which are comprised of text (letters a-z, numbers 0-9, emojis) that needs to be rendered on the screen. Rather than creating a new object for each character in the message, as well as all characters on the screen (e.g; the logo, ads, other user messages), one instance for each object can be used, and the external state (e.g; font, color, absolute location on screen) of that object can be modified.
 
 * Factory Method - The Flyweight pattern typically utilizes a Factory Method to control the creation of objects. In this context, a factory method would control the instantiation of different characters and symbols.
 
-* Singleton - Since only one instance of each Flyweight object should exist at a time, each Flyweight object is typically implemented using a Singleton. 
+* Singleton - Since only one instance of each Flyweight object should exist at a time, each Flyweight object is typically implemented using a Singleton. Similarly, the Facade which the user interacts with should be persistent throughout the session - there shouldn't be several Facade instances,  because the Facade is responsible for controlling screen rendering and server connection.
 
 * Memento - Each user object would have a Memento object which regularly saves their state while writing a post (creating a Message object). This ensures that, if their connection is lost, they can log on again and continue writing their post. The state may be saved periodically based on keystrokes or absolute time.
 
-* Facade - The interface the user interacts with to write and send messages is a Facade - it hides the details of creating and modifying the Message object, connecting to the Twitter servers, and posting the message in chronological order along with other users in their feed. 
+* Command - When a user pushes a button on the frontend to accomplish an action (e.g; submit, delete, retweet), the request will be forwarded to a request object. In this way, the implementation of how a request is performed can be changed seamlessly. 
+
+* Proxy - To ensure a user isn't either banned or spamming (maybe they've been hacked/a bot is posting on their account), the "submit message" object requests to connect to a Proxy, which performs several checks before actually connecting and posting the message.
 
 * Iterator - For searching through Message objects in a feed (for example, if I was looking for a key phrase), I would use the Iterator pattern. This ensures that I can still traverse through Messages if the implementation changes, or if I want to define a new implementation sometime in the future.
-
-* Command - When a user pushes a button on the frontend to accomplish an action (e.g; send, delete, retweet), the request will be forwarded to a request object. In this way, I can change the implementation of how a request is performed seamlessly. 
-
-* Proxy - To ensure a user isn't either banned or spamming (maybe they've been hacked/a bot is posting on their account), the "submit message" request object firsts connect to a Proxy, which performs several checks before actually posting the message.
 
 * Prototype - The "Retweet" button will require performing a clone operation on the original Message object. 
 
