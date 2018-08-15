@@ -24,13 +24,13 @@ To design and implement Twitter, I would use the following software design patte
 
 * Observer Pattern - Each Twitter user is an instantiation of a User class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe/unsubscribe to other users, and have other users subscribe/unsubscribe to them.
 
-* Facade - The interface the user interacts with is a Facade - it hides the details of rendering letters on the screen, connecting to the Twitter servers, and posting the message in chronological order along with other users in their feed. 
+* Facade - The web interface the user interacts with acts as a Facade - it hides the complex internal details of rendering letters on the screen, communicating with buttons, sorting messages, etc.
 
 * Flyweight - Users can create instances of Message objects, which are comprised of text (letters a-z, numbers 0-9, emojis) that needs to be rendered on the screen. Rather than creating a new object for each character in the message, as well as all characters on the screen (e.g; the logo, ads, other user messages), one instance for each object can be used, and the external state (e.g; font, color, absolute location on screen) of that object can be modified.
 
 * Factory Method - The Flyweight pattern typically utilizes a Factory Method to control the creation of objects. In this context, a factory method would control the instantiation of different characters and symbols.
 
-* Singleton - Since only one instance of each Flyweight object should exist at a time, each Flyweight object is typically implemented using a Singleton. Similarly, the Facade which the user interacts with should be persistent throughout the session - there shouldn't be several Facade instances,  because the Facade is responsible for controlling screen rendering and server connection.
+* Singleton - Since only one instance of each Flyweight object should exist at a time, each Flyweight object is typically implemented using a Singleton. Similarly, the Facade which the user interacts with should be persistent throughout the session - having several instances of an object which facilitate screen rendering and button pressing could potentially lead to some issues.
 
 * Memento - Each user object would have a Memento object which regularly saves their state while writing a post (creating a Message object). This ensures that, if their connection is lost, they can log on again and continue writing their post. The state may be saved periodically based on keystrokes or absolute time.
 
