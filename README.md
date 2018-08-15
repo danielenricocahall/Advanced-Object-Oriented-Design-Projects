@@ -20,6 +20,8 @@ The functionality of this architecture can be verified by running the driver (*D
 
 ## Assignment 3: Designing Twitter ##
 
+![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2-Twitter.png)
+
 To design and implement Twitter, I would use the following software design patterns:
 
 * Observer Pattern - Each Twitter user is an instantiation of a User class which implements a Publisher and a Subscriber interface. This ensures that users can subscribe/unsubscribe to other users, and have other users subscribe/unsubscribe to them.
