@@ -16,6 +16,15 @@ In this project, I applied the Abstract Factory, Singleton, Prototype, and Build
 The functionality of this architecture can be verified by running the driver (*Driver.cpp*). 
 ## Assignment 2: Designing a Commerce System ##
 
+To design and implement an abstract Commerce System, I would approach the problem as follows:
+
+To start, I'll create an interface called *Item*, and an abstract base class implementing that interface called *BuyableItem*. The class will have a member variable *m_cost*, which holds the cost of the item, and *m_image*, which holds the image of the object. I can now treat every item that I want to sell as a *Decorator* to the *BuyableItem* class. Every variation of the item will now just be a heavily decorated *BuyableItem*. For example, suppose I want to sell T-shirts. All *BuyableItems* will first be wrapped by the *T-shirt* decoration, and the color of the T-shirt would be a second decoration.
+
+For items that are similar, the Flyweight pattern can be used. Continuing on the T-shirt example, a plain T-shirt can be the Flyweight object, and the external state of the object can be the decorators, the coordinates of the item on the screen, and the image used to represent the object. 
+
+I would use also use a Proxy, to ensure that I can render the image of an item on demand rather than rendering all images on the screen at once. That would be unnecessarily expensive, especially if I have hundreds of items on the screen.
+
+A Facade would be used to facilitate communication between the client and the items. TBD.
 
 
 ## Assignment 3: Designing Twitter ##
