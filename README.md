@@ -18,7 +18,7 @@ The functionality of this architecture can be verified by running the driver (*D
 
 To design and implement an abstract Commerce System, I would approach the problem as follows:
 
-To start, I'll create an interface called *Item*, and an abstract base class implementing that interface called *BuyableItem*. The class will have a member variable *m_cost*, which holds the cost of the item, and *m_image*, which holds the image of the object. I can now treat every item that I want to sell as a *Decorator* to the *BuyableItem* class. Every variation of the item will now just be a heavily decorated *BuyableItem*. For example, suppose I want to sell T-shirts. All *BuyableItems* will first be wrapped by the *T-shirt* decoration, and the color of the T-shirt would be a second decoration.
+To start, I'll create an abstract base class implementing that interface called *BuyableItem*. The class will have a member variable *m_cost*, which holds the cost of the item, and *m_image*, which holds the image of the object. I can now extend *BuyableItem* with a *ConcreteItem* class, and treat every item that I want to sell as a *Decorator* to the *ConcreteItem* class. Every variation of the item will now just be a heavily decorated *ConcreteItem*. For example, suppose I want to sell T-shirts. I would create a subclass of *BuyableItem* called *Tshirt*, and the color/size/other fields of the T-shirt would be decorations.
 
 For items that are similar, the Flyweight pattern can be used. Continuing on the T-shirt example, a plain T-shirt can be the Flyweight object, and the external state of the object can be the decorators, the coordinates of the item on the screen, and the image used to represent the object. 
 
