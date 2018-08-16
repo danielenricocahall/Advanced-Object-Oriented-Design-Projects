@@ -15,7 +15,7 @@ In this project, I applied the Abstract Factory, Singleton, Prototype, and Build
 
 The functionality of this architecture can be verified by running the driver (*Driver.cpp*). 
 ## Assignment 2: Designing a Commerce System ##
-![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2_Commerce.png)
+![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2_ECommerce.png)
 
 To design and implement an abstract Commerce System, I would approach the problem as follows:
 
