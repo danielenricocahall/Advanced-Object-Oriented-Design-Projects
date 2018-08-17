@@ -15,7 +15,7 @@ In this project, I applied the Abstract Factory, Singleton, Prototype, and Build
 
 The functionality of this architecture can be verified by running the driver (*Driver.cpp*). 
 ## Assignment 2: Designing a Commerce System ##
-![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2_ECommerce_Design.png)
+![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2_ECommerce_Design_Final.png)
 
 To design and implement an abstract Commerce System, I would approach the problem as follows:
 
@@ -25,7 +25,7 @@ To control the number of similiar objects being instantiated, each concrete impl
 
 When an item calls the *drawItem* function with the external state, a *ProxyScreenRenderer* instance is used to determine whether or not the image of the item should be displayed. This logic may be based on where the item is on the screen, or another external factor. If the proxy decides that the image should be rendered, the request will be passed on to a *RealScreenRenderer* to display the image.
 
-The creation of objects would be handled by the *ItemFacade*. The *ItemFacade* effectively acts as a factory method which is called by the *FlyweightItemFactory* to create instances of the concrete *BuyableItem*, based on the provided key. While it initially sounds trivial, creating a variety of *BuyableItems* can be complex, and may eventually even the application of different creational patterns. The *ItemFacade* ensures that this functionality is relatively insulated from the rest of the application. 
+The creation of objects would be handled by the *ItemFacade*. The *ItemFacade* effectively acts as a factory method which is used by the *FlyweightItemFactory* to create instances of the concrete *BuyableItem*, based on the provided key. While it initially sounds trivial, creating a variety of *BuyableItems* can be complex, and may eventually even the application of different creational patterns. The *ItemFacade* ensures that this functionality is relatively insulated from the rest of the application. 
 
 
 ## Assignment 3: Designing Twitter ##
