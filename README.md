@@ -15,17 +15,17 @@ In this project, I applied the Abstract Factory, Singleton, Prototype, and Build
 
 The functionality of this architecture can be verified by running the driver (*Driver.cpp*). 
 ## Assignment 2: Designing a Commerce System ##
-![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2_ECommerce.png)
+![alt text](https://github.com/danielenricocahall/Advanced-Object-Oriented-Design-Projects/blob/master/Quiz2_ECommerce_Design.png)
 
 To design and implement an abstract Commerce System, I would approach the problem as follows:
 
-To start, I'll create an abstract base class implementing that interface called *BuyableItem*. The class will have a member variable *m_cost*, which holds the cost of the item, and *m_image*, which holds the image of the object. I can now extend *BuyableItem* with a *ConcreteItem* class, and treat every item that I want to sell as a *Decorator* to the *ConcreteItem* class. Every variation of the item will now just be a heavily decorated *ConcreteItem*. For example, suppose I want to sell T-shirts. I would create a subclass of *BuyableItem* called *Tshirt*, and the color/size/other fields of the T-shirt would be decorations.
+I'll create an abstract base class implementing that interface called *BuyableItem*. The class will have a member variable *m_cost*, which holds the cost of the item, *m_image*, which holds the image of the object, and *m_type*, which holds the type of an object (enum or string). I can now extend *BuyableItem* with a concrete class, and treat every item that I want to sell as a *Decorator* to the concrete class. Every variation will now just be a heavily decorated concrete item. For example, suppose I want to sell shirts. I would create a subclass of *BuyableItem* called *BuyableClothing*, extend *BuyableClothing* with a class called *Shirt*, and implement decorators which extend from *BuyableClothing* to represent various sizes and colors. Each decorator may modify the cost field, as well as change the image which is associated with the item.
 
-For items that are similar, the Flyweight pattern can be used. Continuing on the T-shirt example, a plain T-shirt can be the Flyweight object, and the external state of the object can be the decorators, the coordinates of the item on the screen, and the image used to represent the object. 
+To control the number of similiar objects being instantiated, each concrete implementation of *BuyableItem* would be considered a flyweight, and stored in the *FlyweightItemFactory*. The items can be accessed through a key, which would be the "m_type" field of the *BuyableItem* (e.g; "shirt" may be the key for shirt objects, etc.). The external state (e.g; position on the screen) of the flyweight would be provided when objects need to be rendered, which is when the *drawItem* function is called.
 
-I would use also use a Proxy, to ensure that I can render the image of an item on demand rather than rendering all images on the screen at once. That would be unnecessarily expensive, especially if I have hundreds of items on the screen.
+When an item calls the *drawItem* function with the external state, a *ProxyScreenRenderer* instance is used to determine whether or not the image of the item should be displayed. This logic may be based on where the item is on the screen, or another external factor. If the proxy decides that the image should be rendered, the request will be passed on to a *RealScreenRenderer* to display the image.
 
-A Facade would be used to facilitate communication between the client and the items. TBD.
+The creation of objects would be handled by the *ItemFacade*. The *ItemFacade* effectively acts as a factory method which is called by the *FlyweightItemFactory* to create instances of the concrete *BuyableItem*, based on the provided key. While it initially sounds trivial, creating a variety of *BuyableItems* can be complex, and may eventually even the application of different creational patterns. The *ItemFacade* ensures that this functionality is relatively insulated from the rest of the application. 
 
 
 ## Assignment 3: Designing Twitter ##
